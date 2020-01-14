@@ -1,0 +1,13 @@
+
+#contributed by me
+Question 3:
+
+Input: "rohit"                                 Input: "Khiladi"
+Output: 790                                   Output: 1044   
+
+
+Input: "Akshay"                              Input: "Jennifer"
+Output: 879                                    Output: 1231
+
+
+[Note: String contains only Alphabet]

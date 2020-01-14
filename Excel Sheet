@@ -1,0 +1,67 @@
+
+
+ #contributed by me
+
+Question 5:Column title as appeared in the excel sheet like A B C D......Z AA AB AC AD...AZ BA BB BC....CA CB..so on.
+Given a column title in string array,you have to find the length of the longest consecutive subarray.
+
+[Note: length of column title will not more than 2]
+
+Input: ["AS","B","C","D",AB","AC","BK"]
+Output: 3
+Explanation["B",C","D" is longest consecutive subarray]
+
+Input: ["A","B","AA","AB","AC","AD","AE","AF","BK","BB","BC","BD"]
+Output: 6
+Explanation["AA","AB","AC","AD","AE","AF" is longest consecutive subarray]
+
+
+Code: 
+
+public class Main {
+    public static void main(String[] args) {
+        String s[]=new String[]{"A","B","AA","AB","AC","AD","AE","AF","BK","BB","BC","BD","BE","BF","A","B","C"};
+          int max=1;
+        int t=1;
+        for(int i=1;i<s.length;i++)
+        {
+            
+            int p=0;
+            char k[]=s[i-1].toCharArray();
+             int d=k.length; 
+            
+            if(d==2){
+            p=26*(k[0]-'A'+1)+(k[1]-'A'+1);
+                    }
+            else {
+                p=k[0]-'A'+1;
+            }
+            
+            
+            int q=0;
+            char l[]=s[i].toCharArray();
+             int e=l.length; 
+            
+            if(e==2){
+            q=26*(l[0]-'A'+1)+(l[1]-'A'+1);
+                    }
+            else {
+                q=l[0]-'A'+1;
+            }
+            
+            if(Math.abs(p-q)==1){
+                t++;
+            }
+            else
+            {
+                max=Math.max(max,t);
+                t=1;
+                //i++;
+            }
+        }
+        
+         max=Math.max(max,t);
+        System.out.println("s");
+        System.out.println(max);
+    }
+}

@@ -1,0 +1,57 @@
+
+#contributed by me
+
+Question 7:Given a int array,Print the next nth permutation which rearranges numbers into the lexicographically next greater permutation of numbers.
+If  next greater permutation is not possible, it must rearrange it as the lowest possible order (sorted in ascending order).
+[Note: use only constant extra space]
+
+Input:a[]=[1,2,3,4]  n=3
+Output: 1 3 4 2
+[Explanation: 1st next greater permutation is 1 2 4 3, 2nd next 1 3 2 4 ,3rd next 1 3 4 2]
+
+Input : a[]=[4,3,2,1]  n=2
+Output: 1 2 4 3
+[Explanation: 1st next greater permutation is 1 2 3 4, 2nd next 1 2 4 3]
+
+Code:
+
+// "static void main" must be defined in a public class.
+public class Main {
+     public static void swap(int n[],int i,int j)
+    {
+        int t=n[i];
+        n[i]=n[j];
+        n[j]=t;
+    
+    }
+    public static void reverse(int n[],int i,int j)
+    {
+        while(i<j)
+        {
+           swap(n,i,j);
+            i++;j--;
+        }
+    }    
+    
+    public static void nextPermutation(int[] n,int k) {
+       while(k-->0){ 
+        int i=n.length-2;
+        
+        while(i>=0 && n[i]>=n[i+1])i--;
+        int j=n.length-1;
+        while(i>=0 && n[i]>=n[j])j--;
+        
+        if(i>=0)swap(n,i,j);
+        reverse(n,i+1,n.length-1);
+       }
+    }
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+        int a[]=new int[]{1,2,3};
+        int n=2;
+        nextPermutation(a,n);
+        for(int i=0;i<a.length;i++){
+            System.out.print(a[i]+" ");
+        }
+    }
+}

@@ -1,0 +1,50 @@
+// Contributed by me(Rohit Kumar)
+Question 2: 
+
+Minimum steps required to reach corner(among four corner) in a (n*m)matrix from the given cell position .
+
+[Note: either you can go any of the four corner but you have to return the steps which is nearest to the cell.  You can not move diagonally , you can go  right,left,up,down from the current cell. take one step from one cell to another]
+
+Input: 4 5
+
+          m[][]={{0,0,0,0,0},
+
+                   {0,0,0,0,0},
+
+                   {0,0,0,0,0},
+
+                    {0,0,0,0,0}};
+
+          2 2
+
+Output: 3
+
+Code:
+
+    
+public class Main {
+    public static int find(int n,int m,int a[][],int i,int j)
+    {
+        int tl=Math.abs(i-0)+Math.abs(j-0);
+        int tr=Math.abs(i-0)+Math.abs(m-j-1);
+        int bl=Math.abs(n-i-1)+Math.abs(j-0);
+        int br=Math.abs(n-i-1)+Math.abs(m-j-1);
+        //System.out.println(tl +" "+tr+" "+bl+" "+br);
+          int u=Math.min(tl,tr);
+              int r=Math.min(bl,br);
+        return Math.min(u,r);
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int m=sc.nextInt();
+        int a[][]=new int[n][m];
+        int i=sc.nextInt();
+        int j=sc.nextInt();
+        
+        int min=find(n,m,a,i,j);
+        System.out.println(min);
+    }
+}
+
+

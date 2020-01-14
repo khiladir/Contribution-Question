@@ -15,7 +15,7 @@ Output: 1 2 4 3
 
 Code:
 
-// "static void main" must be defined in a public class.
+
 public class Main {
      public static void swap(int n[],int i,int j)
     {

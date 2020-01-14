@@ -1,0 +1,51 @@
+#Contributed by me
+
+
+
+Question 6: Morse Code of 26 letter of English Alphabet
+{".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."}
+
+Given a list of word,each word in a list can be written as concatenation of Morse code of each letter. eg. "AKS" can be written as ".--.-..." (concatenation".-" + "-.-" + "...").
+Print the word of an array which makes longest length string after transformation of letter into Morse code and also print longest length of transformation string.
+[NOTE: if 2 word becomes same length after transformation then print  the word which have lexicographically big]
+
+Input:["AKS","SKM","AKA","SKS"]
+Output:  "SKS"   9
+
+Input:["MAA","IIT","AK"]
+Output: "MAA"  6
+
+
+Code:
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+        String s[]=new String[]{".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        String t[]=new String[]{"MAA","IIT","AK"};
+        int k=0;
+        int c=0;
+        for(int i=0;i<t.length;i++){
+              StringBuilder sb=new StringBuilder();
+               for(int j=0;j<t[i].length();j++)
+               {
+                   sb.append(s[t[i].charAt(j)-'A']);
+               }
+            int l=sb.length();
+            if(k<l){
+                k=l;
+                c=i;
+            }
+            else if(k==l)
+            {
+                if(t[c].compareTo(t[i])>0)
+                {
+                    c=i;
+                }
+            }
+            
+            }
+        System.out.println(t[c]+" "+k);
+        
+    }
+}

@@ -1,0 +1,50 @@
+#contributed by me
+Question 4:        
+
+Given a Stack containing n elements,you have to print element in order like  if stack contains element 
+like 1 2 3 4 5 6 (1 is at the top and 6 is at the bottom) then answer will be 1 6 2 5 3 4 
+(1st element from top of stack ,2nd element from bottom of stack ,3rd element from 2nd top,4th element from 2nd bottom.....so on).
+[Note: you can use only auxiliary(extra) stack,No any extra space can use other than One 
+     Auxiliary(extra) stack,but can use only constant extra space]
+
+Input : 9 1 1 5 2 6 2 4 5 2  (9 at the top & 2 at bottom)
+Output : 9 2 1 5 1 4 5 2 2 6
+
+Input : 1 2 3 4 5 6 7 8 (1 is at the top of stack)
+Output :1 8 2 7 3 6 4 5
+
+
+
+Code:
+
+     import java.util.*;
+public class Main {
+    public static void alternate(Stack<Integer> s,Stack<Integer> aux,int n)
+    {
+        n=n-1;
+        while(n>0)
+        {
+            int t=s.pop();
+            int k=n;
+            
+            while(!s.isEmpty() && k-->0)aux.push(s.pop());
+            
+            s.push(t);
+            while(!aux.isEmpty())s.push(aux.pop());
+            n=n-2;
+        }
+        while(!s.isEmpty())aux.push(s.pop());
+        while(!aux.isEmpty())System.out.print(aux.pop()+" ");
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        Stack<Integer> s=new Stack<>();
+        Stack<Integer> aux=new Stack<>();
+        for(int i=0;i<n;i++)
+        {
+            s.push(sc.nextInt());
+        }
+        alternate(s,aux,n);
+    }
+}
